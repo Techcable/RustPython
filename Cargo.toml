@@ -15,6 +15,7 @@ include = ["LICENSE", "Cargo.toml", "src/**/*.rs"]
 resolver = "2"
 members = [
     "compiler", "compiler/ast", "compiler/core", "compiler/codegen", "compiler/parser",
+    "compiler/cli",
     ".", "common", "derive", "jit", "vm", "pylib", "stdlib", "wasm/lib", "derive-impl",
 ]
 
@@ -126,6 +127,12 @@ opt-level = 3
 
 [profile.release]
 lto = "thin"
+
+[profile.small]
+inherits = "release"
+opt-level = "s"
+lto = "thin"
+
 
 [patch.crates-io]
 # REDOX START, Uncomment when you want to compile/check with redoxer
